@@ -12,7 +12,7 @@ export default {
 </script>
 
 <style>
-#app {
-  background-color: #f0f0f0;
+html,body,#app {
+  background-color: #f5f5f5;
 }
 </style>

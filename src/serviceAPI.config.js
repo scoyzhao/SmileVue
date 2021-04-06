@@ -1,14 +1,33 @@
-const BASEURL = "https://www.easy-mock.com/mock/5ae2eeb23fbbf24d8cd7f0b6/SmileVue/"
-const LOCALURL = "http://localhost:3000/"
-const URL ={
-    getShopingMallInfo : BASEURL+'index',    //商城首页所有信息
-    getGoodsInfo : BASEURL+'getGoodsInfo', 
-    registerUser : LOCALURL+'user/register',  //用户注册接口
-    login : LOCALURL+'user/login',  //用户登录接口
-    getDetailGoodsInfo : LOCALURL+'goods/getDetailGoodsInfo',  //获取商品详情
-    getCateGoryList : LOCALURL+'goods/getCateGoryList',  //得到大类信息
-    getCateGorySubList : LOCALURL+'goods/getCategorySubList',  //得到小类信息
-    getGoodsListByCategorySubID : LOCALURL+'goods/getGoodsListByCategorySubID',  //得到小类商品信息
+const BASEURL = "http://120.27.247.30:9000/"
+    // const LOCALURL = "http://localhost:3000/"
+const LOCALURL = "http://192.168.199.191:3000/"
+const URL = {
+    getShopingMallInfo: BASEURL + 'index', //商城首页所有信息
+    getGoodsInfo: BASEURL + 'getGoodsInfo',
+    // user
+    registerUser: BASEURL + 'user/register', //用户注册接口
+    login: BASEURL + 'user/login', //用户登录接口
+    // good
+    getDetailGoodsInfo: BASEURL + 'goods/getDetailGoodsInfo', //获取商品详情
+    getCateGoryList: BASEURL + 'goods/getCateGoryList', //得到大类信息
+    getCateGorySubList: BASEURL + 'goods/getCategorySubList', //得到小类信息
+    getGoodsListByCategorySubID: BASEURL + 'goods/getGoodsListByCategorySubID', //得到小类商品信息
+    // commite
+    getCommiteInfo: BASEURL + 'commite/getCommiteInfo',
+    getCommiteNameById: BASEURL + 'commite/getCommiteNameById',
+    // menu
+    getMenuList: BASEURL + 'menu/getMenuList', //获取菜单的接口哈
+    // work
+    getWorkerList: BASEURL + 'worker/getWorkerList',
+    // lifeOrder
+    getLifeOrderList: BASEURL + 'lifeOrder/getOrderList',
+    addLifeOrder: BASEURL + 'lifeOrder/addOrder',
+    // mealOrder
+    addMealOrder: BASEURL + 'mealOrder/addOrder',
+    editMealOrder: BASEURL + 'mealOrder/editOrder',
+    submitOrder: BASEURL + 'mealOrder/submitOrder',
+    getOrderListByCommiteIdAndTime: BASEURL + 'mealOrder/getOrderListByCommiteIdAndTime',
 }
+
 
 module.exports = URL

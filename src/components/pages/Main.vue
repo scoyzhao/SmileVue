@@ -5,11 +5,12 @@
                 <router-view />
             </keep-alive>
         </div>
-        <van-tabbar v-model="active" @change="changeTabbar(active)">
+        <van-tabbar v-model="active" @change="changeTabbar(active)" active-color="#DB3D3C" inactive-color="#646566" >
+            <!-- active-color="#DB3D3C" inactive-color="#fff" -->
             <van-tabbar-item icon="shop">首页</van-tabbar-item>
-            <van-tabbar-item icon="records">列表</van-tabbar-item>
+            <van-tabbar-item icon="records">商品</van-tabbar-item>
             <van-tabbar-item icon="cart">购物车</van-tabbar-item>
-            <van-tabbar-item icon="contact">会员中心</van-tabbar-item>
+            <van-tabbar-item icon="contact">我的</van-tabbar-item>
         </van-tabbar>
     </div>
 </template>
