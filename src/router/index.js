@@ -87,40 +87,33 @@ Vue.use(DropdownMenu);
 Vue.use(DropdownItem);
 Vue.use(VanImage);
 Vue.use(Form);
+
 export default new Router({
     mode: 'history',
     routes: [{
-            path: '/main',
-            name: 'Main',
-            component: Main,
-            children: [
-                { path: '/', name: 'ShoppingMall', component: ShoppingMall },
-                { path: '/CategoryList', name: 'CategoryList', component: CategoryList },
-                { path: '/Cart', name: 'Cart', component: Cart },
-                { path: '/Member', name: 'Member', component: Member },
-                { path: '/GroupOrder', name: 'GroupOrder', component: GroupOrder },
-                { path: '/Order', name: 'Order', component: Order },
-                {
-                    path: '/oldOrder',
-                    name: 'oldOrder',
-                    component: oldOrder
-                },
-                { path: '/historyOrder', name: 'Address', component: HistoryOrder },
-                { path: '/OrderBody', name: 'OrderBody', component: OrderBody },
-                // { path: '/OrderBody', name: 'OrderBody', component: OrderBody },
-                { path: '/otherOrder', name: 'otherOrder', component: otherOrder },
-                { path: '/bookOrder', name: 'bookOrder', component: bookOrder },
-                { path: '/serviceOrder', name: 'serviceOrder', component: serviceOrder },
-                { path: '/OrderS', name: 'OrderS', component: OrderS },
+        path: '/',
+        name: 'Main',
+        component: Main,
+        children: [
+            { path: '/', name: 'shoppingMall', component: ShoppingMall },
+            { path: '/categoryList', name: 'CategoryList', component: CategoryList },
+            { path: '/cart', name: 'Cart', component: Cart },
+            { path: '/member', name: 'Member', component: Member },
 
-
-            ]
-        },
-
-        { path: '/register', name: 'Register', component: Register },
-        { path: '/login', name: 'Login', component: Login },
-        { path: '/goods', name: 'Goods', component: Goods },
-
-
+        ]
+    },
+    { path: '/groupOrder', name: 'GroupOrder', component: GroupOrder },
+    { path: '/order', name: 'Order', component: Order },
+    { path: '/oldOrder', name: 'oldOrder', component: oldOrder },
+    { path: '/historyOrder', name: 'Address', component: HistoryOrder },
+    { path: '/orderBody', name: 'OrderBody', component: OrderBody },
+    // { path: '/OrderBody', name: 'OrderBody', component: OrderBody },
+    { path: '/otherOrder', name: 'otherOrder', component: otherOrder },
+    { path: '/bookOrder', name: 'bookOrder', component: bookOrder },
+    { path: '/serviceOrder', name: 'serviceOrder', component: serviceOrder },
+    { path: '/orderS', name: 'OrderS', component: OrderS },
+    { path: '/register', name: 'Register', component: Register },
+    { path: '/login', name: 'Login', component: Login },
+    { path: '/goods', name: 'Goods', component: Goods },
     ]
 })

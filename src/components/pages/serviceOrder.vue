@@ -22,10 +22,10 @@
           <van-tag plain type="danger">免费</van-tag>
         </template>
         <template slot="title">
-          <div class="good_name">家庭保洁</div>
+          <div class="service_name">家庭保洁</div>
         </template>
         <template slot="desc">
-          <div class="test">服务范围包括：厨房等</div>
+          <div class="service_description">服务范围包括：厨房等</div>
         </template>
         <template slot="footer">
           <van-button size="normal" @click="gotoOrderDetailPage(1)"
@@ -38,10 +38,10 @@
           <van-tag plain type="danger">付费</van-tag>
         </template>
         <template slot="desc">
-          <div class="test">服务范围。。。</div>
+          <div class="service_description">服务范围: 电视电脑维修等</div>
         </template>
         <template slot="title">
-          <div class="good_name">家电维修</div>
+          <div class="service_name">家电维修</div>
         </template>
         <template slot="footer">
           <van-button size="normal"  @click="gotoOrderDetailPage(4)">一键下单</van-button>
@@ -52,10 +52,10 @@
           <van-tag plain type="danger">免费</van-tag>
         </template>
         <template slot="desc">
-          <div class="test">其他上门服务</div>
+          <div class="service_description">其他上门服务</div>
         </template>
         <template slot="title">
-          <div class="good_name">需要帮助</div>
+          <div class="service_name">需要帮助</div>
         </template>
         <template slot="footer">
           <van-button size="normal" @click="gotoOrderDetailPage(2)"
@@ -130,5 +130,13 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.service_name {
+  margin-top: 5px;
+  font-size: 16px;
+}
+
+.service_description {
+  margin: 20px 0;
+}
 </style>

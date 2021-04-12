@@ -376,7 +376,7 @@ export default {
         .then((response) => {
           if (response.data.code === 200) {
             Toast.success("提交成功");
-            window.location.href = "/main";
+            window.location.href = "/";
           } else if (response.data.code === 202) {
             Toast.fail(response.data.message);
           } else {
@@ -404,7 +404,7 @@ export default {
         .then((response) => {
           if (response.data.code === 200) {
             Toast.success("修改成功");
-            window.location.href = "/main";
+            window.location.href = "/";
           } else {
             Toast.fail("修改失败");
           }

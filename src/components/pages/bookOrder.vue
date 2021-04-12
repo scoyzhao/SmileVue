@@ -9,25 +9,35 @@
       />
     </div>
     <van-dropdown-menu>
-      <van-dropdown-item v-model="selectType" :options="option1" @change="changeDocType"/>
+      <van-dropdown-item
+        v-model="selectType"
+        :options="option1"
+        @change="changeDocType"
+      />
     </van-dropdown-menu>
     <!-- <van-cell title="请选择预约日期" :value="date" @click="show = true" />
       <van-calendar v-model="show" @confirm="onConfirm" /> -->
     <div v-for="(item, index) in doctorList" :key="index">
-      <van-card
-        :title="item.name"
-        thumb="https://img01.yzcdn.cn/vant/ipad.jpeg"
-      >
-        <template slot="tags">
-          <van-tag plain type="danger">{{doctorMap[item.description]}}</van-tag>
-        </template>
+      <van-card thumb="https://img01.yzcdn.cn/vant/ipad.jpeg">
         <template slot="desc">
-          <div class="test">
-            身高一米九，拥有八块腹肌的绝世美貌男子，拥有亿万豪宅，在京城数一数二的任人物。。。
+          <div class="doctor_name">
+            {{ item.name }}
           </div>
         </template>
+        <template slot="tags">
+          <van-tag plain type="danger">{{
+            doctorMap[item.description]
+          }}</van-tag>
+        </template>
+        <!-- <template slot="desc">
+          <div class="doctor_description">
+            身高一米九，拥有八块腹肌的绝世美貌男子，拥有亿万豪宅，在京城数一数二的任人物。。。
+          </div>
+        </template> -->
         <template slot="footer">
-          <van-button size="normal" @click="gotoOrderPage(item)">一键预约</van-button>
+          <van-button size="normal" @click="gotoOrderPage(item)"
+            >一键预约</van-button
+          >
         </template>
       </van-card>
     </div>
@@ -83,25 +93,31 @@ export default {
     changeDocType(value) {
       this.selectType = value;
       if (value !== -1) {
-        this.doctorList = this.originDocList.filter(el => Number(el.description) === value)
+        this.doctorList = this.originDocList.filter(
+          (el) => Number(el.description) === value
+        );
       } else {
         this.doctorList = this.originDocList;
       }
     },
     gotoOrderPage(doctor) {
-      const {description, id, name} = doctor;
+      const { description, id, name } = doctor;
       this.$router.push({
-        name: 'Order',
+        name: "Order",
         query: {
           name,
           id,
           description,
-        }
+        },
       });
-    }
+    },
   },
 };
 </script>
 
-<style>
+<style scoped>
+.doctor_name {
+  margin: 5px 0 20px;
+  font-size: 16px;
+}
 </style>

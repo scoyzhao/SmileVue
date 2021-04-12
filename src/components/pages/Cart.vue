@@ -121,7 +121,8 @@ export default {
         .then((response) => {
           if (response.data.code === 200) {
             Toast.success("预约成功");
-            window.location.href = "/main";
+            window.location.href = "/";
+            this.clearCart();
           } else {
             Toast.fail("预约失败");
           }
@@ -131,7 +132,7 @@ export default {
         });
     },
     onSubmit() {
-      if (this.isEmpty) {
+      if (this.cartInfo.length === 0) {
         return Toast.fail("请先添加商品哦~");
       }
       const time = this.nowDate();
@@ -142,7 +143,10 @@ export default {
         goodDescription += `${el.name} * ${el.count}、`;
       });
 
-      const description = `${time} 预约了跑腿小哥购买 ${goodDescription.substring(0, goodDescription.length - 1)}, 共 ${this.totalMoney} 元`;
+      const description = `${time} 预约了跑腿小哥购买 ${goodDescription.substring(
+        0,
+        goodDescription.length - 1
+      )}, 共 ${this.totalMoney} 元`;
 
       this.addLifeOrder({
         userNumber,

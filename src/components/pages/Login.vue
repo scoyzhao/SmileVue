@@ -125,7 +125,7 @@ export default {
             })
               .then(() => {
                 Toast.success("登录成功");
-                this.$router.push("/main");
+                this.$router.push("/");
               })
               .catch((err) => {
                 Toast.fail("登录状态保存失败");
@@ -138,7 +138,7 @@ export default {
         })
         .catch((error) => {
           console.log(error);
-          Toast.fail("登陆1失败");
+          Toast.fail("登陆失败");
           this.openLoading = false;
         });
     },

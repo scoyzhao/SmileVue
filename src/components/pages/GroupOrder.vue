@@ -303,7 +303,7 @@ export default {
         .then((response) => {
           if (response.data.code === 200) {
             Toast.success("提交成功");
-            window.location.href = "/main";
+            window.location.href = "/";
           } else {
             Toast.fail("提交失败");
           }
