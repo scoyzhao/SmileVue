@@ -57,7 +57,7 @@ export default {
         data: { userNumber },
       })
         .then((response) => {
-          this.lifeOrderList = response.data.data;
+          this.lifeOrderList = response.data.data.reverse();
         })
         .catch((error) => {
           console.log(error);
