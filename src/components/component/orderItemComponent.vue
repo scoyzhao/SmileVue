@@ -4,6 +4,7 @@
       <van-col span="20">
         <div class="item_title">
           <span>{{ item.time }}</span>
+          <!-- TODO 类型展示问题 -->
           <span>{{ item.type | typeFilter }}</span>
         </div>
         <div>

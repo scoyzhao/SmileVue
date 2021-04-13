@@ -57,7 +57,11 @@
           text="健康预约"
           @click="gotoPage('/bookOrder', 0)"
         />
-        <van-grid-item icon="location-o" text="天气新闻" url="/otherOrder" />
+        <van-grid-item
+          icon="location-o"
+          text="天气新闻"
+          @click="gotoWeatherPage"
+        />
       </van-grid>
     </div>
     <div class="description">
@@ -155,6 +159,9 @@ export default {
       } else {
         return Toast.fail("你不能去那里哦~");
       }
+    },
+    gotoWeatherPage() {
+      window.location.href = "http://tianqi.2345.com/";
     },
   },
 };

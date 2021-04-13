@@ -37,6 +37,7 @@ export default {
   },
   mounted() {
     this.getMealOrderList();
+    this.getLifeOrderList();
   },
   components: { HistoryOrderList },
   methods: {
@@ -44,9 +45,19 @@ export default {
       this.$router.go(-1);
     },
     getMealOrderList() {
-      // TODO 获取订餐订单
-      console.log("meal");
-      this.mealOrderList = [];
+      const { userNumber } = JSON.parse(localStorage.getItem("user"));
+      axios({
+        // 获取社工的uri
+        url: url.getMealOrderList,
+        method: "post",
+        data: { userNumber },
+      })
+        .then((response) => {
+          this.mealOrderList = response.data.data.reverse();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
     getLifeOrderList() {
       const { userNumber } = JSON.parse(localStorage.getItem("user"));

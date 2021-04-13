@@ -27,6 +27,7 @@ const URL = {
     editMealOrder: BASEURL + 'mealOrder/editOrder',
     submitOrder: BASEURL + 'mealOrder/submitOrder',
     getOrderListByCommiteIdAndTime: BASEURL + 'mealOrder/getOrderListByCommiteIdAndTime',
+    getMealOrderList: BASEURL + 'mealOrder/getOrderList',
 }
 
 

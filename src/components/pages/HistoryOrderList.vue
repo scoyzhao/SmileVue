@@ -14,7 +14,7 @@ import orderItemComponent from "../component/orderItemComponent";
 
 export default {
   props: ["orderList"],
-  components: {orderItemComponent},
+  components: { orderItemComponent },
 };
 </script>
 
