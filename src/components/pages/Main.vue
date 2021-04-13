@@ -21,6 +21,8 @@
 </template>
 
 <script>
+import { Toast } from "vant";
+
 export default {
   data() {
     return {
@@ -32,36 +34,48 @@ export default {
     this.changeTabBarActive();
   },
   updated() {
-    console.log(this.nowPath);
     this.changeTabBarActive();
   },
   methods: {
     changeTabBarActive() {
       this.nowPath = this.$route.path;
+      const { type } = JSON.parse(localStorage.getItem("user"));
+
       if (this.nowPath == "/") {
         this.active = 0;
-      }
-      if (this.nowPath == "/categoryList") {
-        this.active = 1;
-      }
-      if (this.nowPath == "/cart") {
-        this.active = 2;
       }
       if (this.nowPath == "/member") {
         this.active = 3;
       }
+
+      if (type === 0) {
+        if (this.nowPath == "/categoryList") {
+          this.active = 1;
+        }
+        if (this.nowPath == "/cart") {
+          this.active = 2;
+        }
+      }
     },
     changeTabbar(active) {
-      console.log("🚀 ~ file: Main.vue ~ line 55 ~ changeTabbar ~ active", active)
+      const { type } = JSON.parse(localStorage.getItem("user"));
       switch (active) {
         case 0:
           this.$router.push("/");
           break;
         case 1:
-          this.$router.push({ name: "CategoryList" });
+          if (type === 0) {
+            this.$router.push({ name: "CategoryList" });
+          } else {
+            Toast.fail("你不能去那里哦~");
+          }
           break;
         case 2:
-          this.$router.push({ name: "Cart" });
+          if (type === 0) {
+            this.$router.push({ name: "Cart" });
+          } else {
+            Toast.fail("你不能去那里哦~");
+          }
           break;
         case 3:
           this.$router.push({ name: "Member" });
