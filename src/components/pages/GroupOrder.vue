@@ -44,7 +44,7 @@
           <div class="pang-text">
             <van-row>
               <van-col span="12">
-                <div class="pang-goods-name">{{ number2TypeName[0] }}</div>
+                <div class="pang-goods-name">{{ number2TypeName[5] }}</div>
               </van-col>
               <van-col span="4">
                 <div class="pang-goods-price">
@@ -71,7 +71,7 @@
           <div class="pang-text">
             <van-row>
               <van-col span="12">
-                <div class="pang-goods-name">{{ number2TypeName[1] }}</div>
+                <div class="pang-goods-name">{{ number2TypeName[6] }}</div>
               </van-col>
               <van-col span="4">
                 <div class="pang-goods-price">
@@ -98,7 +98,7 @@
           <div class="pang-text">
             <van-row>
               <van-col span="12">
-                <div class="pang-goods-name">{{ number2TypeName[2] }}</div>
+                <div class="pang-goods-name">{{ number2TypeName[7] }}</div>
               </van-col>
               <van-col span="4">
                 <div class="pang-goods-price">
@@ -179,9 +179,9 @@ export default {
       onlyDinnerOrderList: [],
       allOrderList: [],
       number2TypeName: {
-        0: "老人午餐",
-        1: "老人晚餐",
-        2: "老人全餐",
+        5: "老人午餐",
+        6: "老人晚餐",
+        7: "老人全餐",
       },
     };
   },
@@ -358,9 +358,6 @@ export default {
   color: #646566;
   background-color: #fff;
   /* text-indent: 10px; */
-}
-.cart-list {
-  /* background-color: #E3F2F6; */
 }
 .pang-row {
   display: flex;

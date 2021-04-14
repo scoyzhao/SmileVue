@@ -305,12 +305,12 @@ export default {
   },
   data() {
     return {
-      orderType: 0,
+      orderType: 5,
       user: {},
       numberToSinglePrice: {
-        0: 10,
-        1: 10,
-        2: 25,
+        5: 10,
+        6: 10,
+        7: 25,
       },
     };
   },
