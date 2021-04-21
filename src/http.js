@@ -6,7 +6,6 @@ let instance = axios.create()
 // 添加请求拦截器
 instance.interceptors.request.use(function(config) {
     const token = localStorage.getItem('token');
-    console.log(token)
     if (token) {
         config.headers['Authorization'] = token;
     }

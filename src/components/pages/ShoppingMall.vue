@@ -7,7 +7,7 @@
     </van-sticky>
     <!--swiper area-->
     <div class="swiper-area">
-      <van-swipe :autoplay="1000">
+      <van-swipe :autoplay="3000">
         <van-swipe-item v-for="(url, index) in bannerPicArray" :key="index">
           <img class="block_img" :src="url" width="100%" />
         </van-swipe-item>
@@ -72,8 +72,13 @@
         <div class="description-content">老人服务：预定餐、上门服务等</div>
       </div>
     </div>
-    <div class="recommend-area" v-show="user.type == 0">
-      <van-steps :active="active" active-icon="success" active-color="#DB3D3C">
+    <div class="step-area" v-show="user.type === 0">
+      <div class="step-title">{{ mealMsg }}</div>
+      <van-steps
+        :active="mealActive"
+        active-icon="success"
+        active-color="#DB3D3C"
+      >
         <van-step>已下单</van-step>
         <van-step>商家制作中</van-step>
         <van-step>正在派送中</van-step>
@@ -95,15 +100,15 @@ import { Toast } from "vant";
 
 export default {
   mounted() {
-    // 调用获取社区信息的接口，并且放到colunmns理
-    this.getMenuList();
-    this.getUserInfo();
+    this.initQuery();
   },
   data() {
     return {
-      active: 0,
       bannerPicArray: [],
       user: {},
+      orderMealType: null,
+      mealActive: 2,
+      mealMsg: '今日暂无订餐~',
     };
   },
   filters: {
@@ -112,7 +117,17 @@ export default {
     },
   },
   components: { swiper, swiperSlide, floorComponent, goodsInfo },
+  computed: {
+    showStepArea: function() {
+      return orderMealType && this.user.type === 0;
+    }
+  },
   methods: {
+    initQuery() {
+      this.getMenuList();
+      this.getUserInfo();
+      this.getOrderType();
+    },
     getUserInfo() {
       this.user = JSON.parse(localStorage.getItem("user"));
       this.getCommiteName(this.user.commiteId);
@@ -162,6 +177,47 @@ export default {
     },
     gotoWeatherPage() {
       window.location.href = "http://tianqi.2345.com/";
+    },
+    nowDate() {
+      var nowDate = new Date();
+      var date = {
+        year: nowDate.getFullYear(),
+        month: nowDate.getMonth() + 1,
+      };
+      var systemDate =
+        date.year + "-" + (date.month >= 10 ? date.month : "0" + date.month);
+      // console.log(systemDate);
+      return systemDate;
+    },
+    // * 获取老人当天是否有订餐，如果有返回类型：5 午餐 6 晚餐 7 全餐
+    getOrderType() {
+      const { userNumber } = JSON.parse(localStorage.getItem("user"));
+      axios({
+        // 获取菜单的uri
+        url: url.getMealOrderList,
+        method: "post",
+        data: { userNumber },
+      })
+        .then((response) => {
+          if (response.data.code === 200) {
+            const { data } = response.data;
+            for (let i = 0; i < data.length; i++) {
+              // * status = 2 表示审核已完成
+              if (data[i].time === this.nowDate() && data[i].status === 2) {
+                if (data[i].type === 5) {
+                  this.mealMsg='今日有预定午餐(大约12:00送达)';
+                } else if (data[i].type === 6) {
+                  this.mealMsg='今日有预定晚餐(大约18:00送达)';
+                } else if (data[i].type === 7) {
+                  this.mealMsg='今日有预定午餐(大约12:00送达)、晚餐(大约18:00送达)';
+                }
+              }
+            }
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
   },
 };
@@ -246,10 +302,19 @@ export default {
   margin-top: 0.3rem;
   margin-left: 1rem;
 }
-.recommend-area {
+.step-area {
   border-bottom: 1px solid #f2f3f5;
   margin-top: 0.5rem;
   padding-bottom: 3rem;
+  border-radius: 15px;
+  background-color: #fff;
+  margin-top: 0.5rem;
+}
+.step-title {
+  padding: 0.6rem 0.8rem 0.6rem 0.8rem;
+  background-color: #fff;
+  font-weight: bold;
+  font-size: 0.5rem;
 }
 .recommend-black {
   height: 2rem;
