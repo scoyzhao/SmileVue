@@ -327,12 +327,12 @@ export default {
           if (response.data.code === 200) {
             this.orderList = response.data.data.filter((el) => el.status !== 2);
             this.onlyLunchOrderList = this.orderList.filter(
-              (el) => el.type === 0
+              (el) => el.type === 5
             );
             this.onlyDinnerOrderList = this.orderList.filter(
-              (el) => el.type === 1
+              (el) => el.type === 6
             );
-            this.allOrderList = this.orderList.filter((el) => el.type === 2);
+            this.allOrderList = this.orderList.filter((el) => el.type === 7);
           } else {
             Toast.fail("获取数据失败");
           }
