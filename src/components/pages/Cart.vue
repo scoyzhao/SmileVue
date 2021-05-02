@@ -137,7 +137,12 @@ export default {
       }
       const time = this.nowDate();
       const type = 3;
-      const { userNumber } = JSON.parse(localStorage.getItem("user"));
+      const { userNumber, auditStatus } = JSON.parse(localStorage.getItem("user"));
+
+      if (auditStatus === 0) {
+        return Toast.fail("用户尚未审核，请联系社区管理员审核先～");
+      }
+
       let goodDescription = "";
       this.cartInfo.map((el) => {
         goodDescription += `${el.name} * ${el.count}、`;
