@@ -39,8 +39,8 @@
         </div>
       </div>
 
-      <div class="cart-list" v-if="onlyLunchOrderList.length !== 0">
-        <div class="pang-row">
+      <div class="cart-list">
+        <div class="pang-row" v-if="onlyLunchOrderList.length !== 0">
           <div class="pang-text">
             <van-row>
               <van-col span="12">
@@ -326,12 +326,8 @@ export default {
         .then((response) => {
           if (response.data.code === 200) {
             this.orderList = response.data.data.filter((el) => el.status !== 2);
-            this.onlyLunchOrderList = this.orderList.filter(
-              (el) => el.type === 5
-            );
-            this.onlyDinnerOrderList = this.orderList.filter(
-              (el) => el.type === 6
-            );
+            this.onlyLunchOrderList = this.orderList.filter(el => el.type === 5);
+            this.onlyDinnerOrderList = this.orderList.filter(el => el.type === 6);
             this.allOrderList = this.orderList.filter((el) => el.type === 7);
           } else {
             Toast.fail("获取数据失败");
