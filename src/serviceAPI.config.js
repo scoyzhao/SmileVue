@@ -1,5 +1,5 @@
 const BASEURL = "http://120.27.247.30:9000/"
-    // const LOCALURL = "http://localhost:3000/"
+    // const LOCALURL = "http://localhost:3000/111"
 const LOCALURL = "http://192.168.199.191:3000/"
 const URL = {
     getShopingMallInfo: BASEURL + 'index', //商城首页所有信息
