@@ -69,11 +69,20 @@
         </van-popup>
       </div>
 
+      <div
+        :style="{ marginTop: '30px' }"
+        class="input_name"
+      >
+        <van-field
+          v-model="address"
+          type="string"
+          left-icon="wap-home-o"
+          placeholder="  请输入具体地址"
+        />
+      </div>
+
       <div class="register-button">
-        <van-button
-          @click="registerAction"
-          size="large"
-          :loading="openLoading"
+        <van-button @click="registerAction" size="large" :loading="openLoading"
           >马上注册</van-button
         >
       </div>
@@ -96,21 +105,22 @@ export default {
       username: "",
       password: "",
       phone: "",
-      userNumber:"",
+      userNumber: "",
+      address: "",
       openLoading: false, //是否开启用户注册的Loading状态
       usernameErrorMsg: "", //当用户名出现错误时的提示信息
       passwordErrorMsg: "", //当密码出现错误时的提示信息
       phoneErrorMsg: "", //当密码出现错误时的提示信息
       userNumberErrorMsg: "",
-      commitNameErrorMsg: '',
+      commitNameErrorMsg: "",
       value: "",
       columns: [],
       originColumns: [],
-      commiteName: '',
+      commiteName: "",
       showPicker: false,
     };
   },
-  filters:{
+  filters: {
     commiteFilter() {
       return toMoney(money);
     },
@@ -134,6 +144,7 @@ export default {
           phone: this.phone,
           commiteId: this.getCommitIdByName(this.commiteName),
           userNumber: this.userNumber,
+          address: this.address,
         },
       })
         .then((response) => {
@@ -208,8 +219,8 @@ export default {
         .then((response) => {
           console.log(response);
           if (response.data.code == 200) {
-            this.columns = response.data.data.map(function(el) {
-              return el.name
+            this.columns = response.data.data.map(function (el) {
+              return el.name;
             });
             this.originColumns = response.data.data;
           }

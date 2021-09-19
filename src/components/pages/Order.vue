@@ -129,11 +129,7 @@ import { Toast } from "vant";
 export default {
   mounted() {
     this.getUserInfo();
-  },
-  watch: {
-    $route: function (to, from) {
-      this.setDoctor();
-    },
+    this.setDoctor();
   },
   data() {
     return {

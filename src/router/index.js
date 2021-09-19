@@ -32,7 +32,7 @@ import Router from 'vue-router'
 import ShoppingMall from '@/components/pages/ShoppingMall'
 import Register from '@/components/pages/Register'
 import Login from '@/components/pages/Login'
-import Goods from '@/components/pages/goods'
+import Goods from '@/components/pages/Goods'
 import CategoryList from '@/components/pages/CategoryList'
 import Cart from '@/components/pages/Cart'
 import Main from '@/components/pages/Main'
@@ -87,6 +87,8 @@ Vue.use(DropdownMenu);
 Vue.use(DropdownItem);
 Vue.use(VanImage);
 Vue.use(Form);
+
+// 123
 
 export default new Router({
     mode: 'history',

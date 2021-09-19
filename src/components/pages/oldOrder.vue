@@ -319,7 +319,7 @@ export default {
       this.$router.go(-1);
     },
     changeTab(value) {
-      this.orderType = value;
+      this.orderType = value + 5;
     },
     getUserInfo() {
       this.user = JSON.parse(localStorage.getItem("user"));
@@ -415,9 +415,14 @@ export default {
     },
     onSubmit() {
       const type = Number(this.orderType);
-      const { userNumber, commiteId } = JSON.parse(
+      const { userNumber, commiteId, auditStatus } = JSON.parse(
         localStorage.getItem("user")
       );
+
+      if (auditStatus === 0) {
+        return Toast.fail("用户尚未审核，请联系社区管理员审核先～");
+      }
+
       const time = this.bookDate();
       const price = this.numberToSinglePrice[this.orderType] * this.getMonthCountDay()
 

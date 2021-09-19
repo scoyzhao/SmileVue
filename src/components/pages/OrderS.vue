@@ -324,7 +324,14 @@ export default {
         return Toast.fail("请先选择社工~");
       }
 
-      const { userNumber } = JSON.parse(localStorage.getItem("user"));
+      const { userNumber, auditStatus } = JSON.parse(
+        localStorage.getItem("user")
+      );
+
+      if (auditStatus === 0) {
+        return Toast.fail("用户尚未审核，请联系社区管理员审核先～");
+      }
+
       const time = this.nowDate();
       const { type } = this.$route.query;
       const description = `${this.bookDate()} 预约了 ${this.workername} 服务`;
