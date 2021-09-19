@@ -88,6 +88,8 @@ Vue.use(DropdownItem);
 Vue.use(VanImage);
 Vue.use(Form);
 
+// 123
+
 export default new Router({
     mode: 'history',
     routes: [{
